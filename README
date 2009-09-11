@@ -1,0 +1,9 @@
+======================================
+lightweight python virtual environment
+======================================
+
+this directory structure is trying to be a relocatable virtual python environment
+
+it is inspired by virtulenv package a lot, and uses its activate_this.py command
+
+
