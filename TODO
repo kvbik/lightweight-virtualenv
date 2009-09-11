@@ -1,0 +1,10 @@
+
+* write some documentation
+
+* find how to get path to systemwide python installation
+  so it can be called in python.py and it will work on any platform then
+
+* create generator command for this environment
+  it will take care of python version and stuff
+
+
