@@ -72,11 +72,4 @@ def __boot():
 if __name__=='site':    
     __boot()
     del __boot
-    
-
-
-
-
-
-
 
