@@ -13,5 +13,8 @@ base = dirname(__file__)
 os.environ['PYTHONPATH'] = abspath(join(base, pardir))
 
 cmd = ['python'] + sys.argv[1:]
-subprocess.call(cmd)
+try:
+    subprocess.call(cmd)
+except KeyboardInterrupt:
+    pass
 
