@@ -6,8 +6,6 @@ this directory structure is trying to be a relocatable virtual python environmen
 
 it is inspired by virtulenv package a lot, and uses its activate_this.py command
 
-if you want to try this, clone it (fork me) and just define PYTHONPATH env
-variable pointing at this repository, or call directly {{ REPO }}/bin/python - which
-is a shell script or try {{ REPO }}/bin/python.py. python* files are just wrappers,
-that sets environment variable for you and passes same arguments to system installed python
+it just tries to replace copying python binary with wrapping it and setting
+correct environment variable - which should be just setting PYTHONHOME
 
