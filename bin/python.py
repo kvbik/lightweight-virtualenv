@@ -10,7 +10,8 @@ from os.path import join, dirname, pardir, abspath
 import subprocess
 
 base = dirname(__file__)
-os.environ['PYTHONPATH'] = abspath(join(base, pardir))
+pypath = os.environ.get('PYTHONPATH', '').split(':')
+os.environ['PYTHONPATH'] = ':'.join([abspath(join(base, pardir))] + pypath)
 
 cmd = ['python'] + sys.argv[1:]
 try:
