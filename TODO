@@ -1,3 +1,4 @@
 
  * find out, if it really is only about setting the variable
+   if it works under wsgi the same way as it does in interactive env
 

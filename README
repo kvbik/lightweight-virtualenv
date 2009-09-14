@@ -9,3 +9,7 @@ it is inspired by virtulenv package a lot, and uses its activate_this.py command
 it just tries to replace copying python binary with wrapping it and setting
 correct environment variable - which should be just setting PYTHONHOME
 
+which is discussed here in many more details::
+
+http://blog.dscpl.com.au/2007/11/poor-mans-python-virtual-environment.html
+
