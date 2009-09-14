@@ -4,7 +4,7 @@ from os.path import dirname, join
 base = dirname(__file__)
 
 # check whether you are in virtualenv
-print 'virtual environment enabled with mocked datetime'
+#print 'virtual environment enabled with mocked datetime'
 
 # activate virtualenv
 activate_this = join(base, 'bin', 'activate_this.py')
