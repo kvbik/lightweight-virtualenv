@@ -1,6 +1,5 @@
 
 p=`dirname $0`
-path=`cd $p; cd ..; pwd`
-export PYTHONPATH=$path:$PYTHONPATH
-python $@
+path=`cd $p; pwd`
+${path}/python.py $@
 
