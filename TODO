@@ -1,11 +1,18 @@
 
 * test in wsgi env
+  -> if there is no printing python-path wsgi option works as expected
 
 * test on windows
 
 * find how to get path to systemwide python installation
   so it can be called in python.py and it will work on any platform then
+  -> could sys.prefix be used?
 
 * create generator command for this environment
   it will take care of python version and stuff
+  -> maybe just test a lot this environment
+     and use it as a template for normal virtualenv
+
+* where does setuptools install things,
+  must it be lib/pythonX.Y/site-packages/?
 
