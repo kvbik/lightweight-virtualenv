@@ -13,7 +13,7 @@ base = dirname(__file__)
 pypath = os.environ.get('PYTHONPATH', '').split(':')
 os.environ['PYTHONPATH'] = ':'.join([abspath(join(base, pardir))] + pypath)
 
-cmd = ['python'] + sys.argv[1:]
+cmd = [sys.executable] + sys.argv[1:]
 try:
     subprocess.call(cmd)
 except KeyboardInterrupt:
