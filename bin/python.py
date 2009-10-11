@@ -32,7 +32,7 @@ def prepare_command():
     '''
     prepare command to run
     '''
-    cmd = ['python'] + sys.argv[1:]
+    cmd = [sys.executable] + sys.argv[1:]
     cmd = map(lambda s: '"%s"' % s.replace('"', '\\"'), cmd)
     cmdstr = ' '.join(cmd)
     return cmdstr
