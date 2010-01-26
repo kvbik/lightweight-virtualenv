@@ -1,10 +1,6 @@
 
 * test on windows
 
-* find how to get path to systemwide python installation
-  so it can be called in python.py and it will work on any platform then
-  -> could sys.prefix be used?
-
 * create generator command for this environment
   it will take care of python version and stuff
   -> maybe just test a lot this environment
