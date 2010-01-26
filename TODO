@@ -1,7 +1,4 @@
 
-* test in wsgi env
-  -> if there is no printing python-path wsgi option works as expected
-
 * test on windows
 
 * find how to get path to systemwide python installation
