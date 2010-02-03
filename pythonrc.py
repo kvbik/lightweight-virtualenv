@@ -7,8 +7,11 @@ base = dirname(__file__)
 
 # create lib subdir
 site_packages = join(base, 'lib', 'python%s' % sys.version[:3], 'site-packages')
-if not exists(site_packages):
-    makedirs(site_packages)
+try:
+    if not exists(site_packages):
+        makedirs(site_packages)
+except OSError:
+    pass
 
 # check whether you are in virtualenv
 #print 'virtual environment enabled :: takze dobry vecer...'
