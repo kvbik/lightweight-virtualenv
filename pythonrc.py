@@ -1,20 +1,23 @@
 
-import sys
 from os.path import dirname, join, exists
-from os import makedirs
-
-base = dirname(__file__)
-
-# create lib subdir
-site_packages = join(base, 'lib', 'python%s' % sys.version[:3], 'site-packages')
-try:
-    if not exists(site_packages):
-        makedirs(site_packages)
-except OSError:
-    pass
+import distutils.command.install
 
 # check whether you are in virtualenv
 #print 'virtual environment enabled :: takze dobry vecer...'
+
+base = dirname(__file__)
+
+# set correct install schemes
+SCHEME = {
+    'purelib': '$base/lib/site-packages',
+    'platlib': '$base/lib/site-packages',
+    'headers': '$base/include/$dist_name',
+    'scripts': '$base/bin',
+    'data'   : '$base',
+}
+schemes = distutils.command.install.INSTALL_SCHEMES
+for k in schemes.keys():
+    schemes[k] = SCHEME
 
 # activate virtualenv
 activate_this = join(base, 'bin', 'activate_this.py')
