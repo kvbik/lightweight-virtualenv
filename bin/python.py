@@ -28,15 +28,25 @@ def inject_pythonpath():
     pypath.insert(0, thispath)
     os.environ['PYTHONPATH'] = ':'.join(pypath)
 
-def prepare_command():
+def prepare_command(argv=[]):
     '''
     prepare command to run
     '''
-    cmd = [sys.executable] + sys.argv[1:]
+    cmd = [sys.executable] + argv
     cmd = map(lambda s: '"%s"' % s.replace('"', '\\"'), cmd)
     cmdstr = ' '.join(cmd)
     return cmdstr
 
-inject_pythonpath()
-os.system(prepare_command())
+def run(cmd):
+    os.system(cmd)
+
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv[1:]
+    inject_pythonpath()
+    cmd = prepare_command(argv)
+    run(cmd)
+
+if __name__ == '__main__':
+    main()
 
