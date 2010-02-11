@@ -33,6 +33,18 @@ class TestRunCase(TestCase):
         stdout, stderr = self.run_command(cmd)
         self.failUnlessEqual('128\n', stdout)
 
+    def test_run_python_script(self):
+        script = path.join(self.oldcwd, 'tests', 'scripts','print.py')
+        cmd = '%s %s' % (self.python, script)
+        stdout, stderr = self.run_command(cmd)
+        self.failUnlessEqual('', stdout)
+
+    def test_run_python_script_with_args(self):
+        script = path.join(self.oldcwd, 'tests', 'scripts','print.py')
+        cmd = '%s %s a b c' % (self.python, script)
+        stdout, stderr = self.run_command(cmd)
+        self.failUnlessEqual("['a', 'b', 'c']\n", stdout)
+
     def tearDown(self):
         # go back
         os.chdir(self.oldcwd)
