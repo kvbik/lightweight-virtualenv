@@ -9,8 +9,8 @@ base = dirname(__file__)
 
 # set correct install schemes
 SCHEME = {
-    'purelib': '$base/lib/site-packages',
-    'platlib': '$base/lib/site-packages',
+    'purelib': '$base/lib/python/site-packages',
+    'platlib': '$base/lib/python/site-packages',
     'headers': '$base/include/$dist_name',
     'scripts': '$base/bin',
     'data'   : '$base',

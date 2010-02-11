@@ -25,7 +25,6 @@ def inject_pythonpath():
         pypath.remove(thispath)
     except ValueError:
         pass
-    pypath.insert(0, join(thispath, 'lib', 'site-packages')) # setuptools controls this
     pypath.insert(0, thispath)
     os.environ['PYTHONPATH'] = ':'.join(pypath)
 

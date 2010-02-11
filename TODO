@@ -1,4 +1,8 @@
 
+* smazat os.unlink ze setuptools a zjistit, proc se neprocesujou *.pth files
+  /usr/lib/python2.6/distutils/command/install.py
+  /usr/lib/python2.6/site-packages/setuptools/command/easy_install.py
+
 * test on windows
 
 * could this be used as a template for virtualenv?
