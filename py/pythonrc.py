@@ -20,7 +20,7 @@ schemes = distutils.command.install.INSTALL_SCHEMES
 for k in schemes.keys():
     schemes[k] = SCHEME
 
-# do not spawn with -E argument
+# do not spawn with -E argument TODO: this is very ugly
 def spawn (cmd,
            search_path=1,
            verbose=0,
