@@ -51,6 +51,9 @@ class TestRunCase(TestCase):
         stdout, stderr = self.run_command(inst)
         os.chdir(self.oldcwd)
 
+        print stdout
+        print stderr
+
         cmd = '%s %s -c "import venvtest; print venvtest.__versionstr__"' % (sys.executable, self.python)
         stdout, stderr = self.run_command(cmd)
         expected = '0.1.0'
