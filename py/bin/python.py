@@ -45,6 +45,8 @@ def main(argv=None):
         argv = sys.argv[1:]
     inject_pythonpath()
     cmd = prepare_command(argv)
+    if sys.platform == 'win32':
+        cmd = '"%s"' % cmd
     run(cmd)
 
 if __name__ == '__main__':
