@@ -14,11 +14,11 @@ class TestRunCase(TestCase):
 
         # create test dir structure
         self.directory = mkdtemp(prefix='test_virtualenv_')
-        self.virtualenv = path.join(self.directory, 'PY')
+        self.virtualenv = path.join(self.directory, 'py')
         self.python = path.join(self.virtualenv, 'bin', 'python.py')
 
         # copy virtualenv there
-        copytree('.', self.virtualenv)
+        copytree('./py/', self.virtualenv)
 
         # test modules
         self.imported = []
