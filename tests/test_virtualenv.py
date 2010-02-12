@@ -80,5 +80,5 @@ class TestRunCase(TestCase):
         os.chdir(self.oldcwd)
 
         # dir cleanup
-        rmtree(self.directory)
+        rmtree(self.directory, True)
 
