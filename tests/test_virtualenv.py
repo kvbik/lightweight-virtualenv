@@ -31,7 +31,7 @@ class TestRunCase(TestCase):
     def test_python_itself(self):
         cmd = '%s %s -c "print 128"' % (sys.executable, self.python)
         stdout, stderr = self.run_command(cmd)
-        self.failUnlessEqual('128\n', stdout)
+        self.failUnlessEqual('128', stdout.strip())
 
     def test_run_python_script(self):
         script = path.join(self.oldcwd, 'tests', 'scripts','print.py')
@@ -43,7 +43,7 @@ class TestRunCase(TestCase):
         script = path.join(self.oldcwd, 'tests', 'scripts','print.py')
         cmd = '%s %s %s a b c' % (sys.executable, self.python, script)
         stdout, stderr = self.run_command(cmd)
-        self.failUnlessEqual("['a', 'b', 'c']\n", stdout)
+        self.failUnlessEqual("['a', 'b', 'c']", stdout.strip())
 
     def install_some_way(self, inst_type, inst_command='install'):
         os.chdir(path.join(self.oldcwd, 'tests', 'installs', 'venvtest-%s' % inst_type))
@@ -53,8 +53,8 @@ class TestRunCase(TestCase):
 
         cmd = '%s %s -c "import venvtest; print venvtest.__versionstr__"' % (sys.executable, self.python)
         stdout, stderr = self.run_command(cmd)
-        expected = '0.1.0\n'
-        self.failUnlessEqual(expected, stdout)
+        expected = '0.1.0'
+        self.failUnlessEqual(expected, stdout.strip())
 
         cmd = '%s %s -c "import venvtest; print venvtest.__file__"' % (sys.executable, self.python)
         stdout, stderr = self.run_command(cmd)
