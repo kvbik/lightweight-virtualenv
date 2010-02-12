@@ -45,6 +45,22 @@ class TestRunCase(TestCase):
         stdout, stderr = self.run_command(cmd)
         self.failUnlessEqual("['a', 'b', 'c']\n", stdout)
 
+    def install_some_way(self, inst_type, inst_command='install'):
+        os.chdir(path.join(self.oldcwd, 'tests', 'installs', 'venvtest-%s' % inst_type))
+        inst = '%s setup.py %s' % (self.python, inst_command)
+        stdout, stderr = self.run_command(inst)
+
+        cmd = '%s -c "import venvtest; print venvtest.__versionstr__"' % self.python
+        stdout, stderr = self.run_command(cmd)
+
+        self.failUnlessEqual('0.1.0\n', stdout)
+
+    def test_install_distutils_way(self):
+        self.install_some_way('distutils')
+
+    def test_install_setuptools_way(self):
+        self.install_some_way('setuptools')
+
     def tearDown(self):
         # go back
         os.chdir(self.oldcwd)
