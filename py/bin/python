@@ -1,3 +1,4 @@
+#!/bin/sh
 
 p=`dirname $0`
 path=`cd $p; pwd`
