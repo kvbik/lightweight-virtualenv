@@ -29,34 +29,34 @@ class TestRunCase(TestCase):
         return p.communicate()
 
     def test_python_itself(self):
-        cmd = '%s -c "print 128"' % self.python
+        cmd = '%s %s -c "print 128"' % (sys.executable, self.python)
         stdout, stderr = self.run_command(cmd)
         self.failUnlessEqual('128\n', stdout)
 
     def test_run_python_script(self):
         script = path.join(self.oldcwd, 'tests', 'scripts','print.py')
-        cmd = '%s %s' % (self.python, script)
+        cmd = '%s %s %s' % (sys.executable, self.python, script)
         stdout, stderr = self.run_command(cmd)
         self.failUnlessEqual('', stdout)
 
     def test_run_python_script_with_args(self):
         script = path.join(self.oldcwd, 'tests', 'scripts','print.py')
-        cmd = '%s %s a b c' % (self.python, script)
+        cmd = '%s %s %s a b c' % (sys.executable, self.python, script)
         stdout, stderr = self.run_command(cmd)
         self.failUnlessEqual("['a', 'b', 'c']\n", stdout)
 
     def install_some_way(self, inst_type, inst_command='install'):
         os.chdir(path.join(self.oldcwd, 'tests', 'installs', 'venvtest-%s' % inst_type))
-        inst = '%s setup.py %s' % (self.python, inst_command)
+        inst = '%s %s setup.py %s' % (sys.executable, self.python, inst_command)
         stdout, stderr = self.run_command(inst)
         os.chdir(self.oldcwd)
 
-        cmd = '%s -c "import venvtest; print venvtest.__versionstr__"' % self.python
+        cmd = '%s %s -c "import venvtest; print venvtest.__versionstr__"' % (sys.executable, self.python)
         stdout, stderr = self.run_command(cmd)
         expected = '0.1.0\n'
         self.failUnlessEqual(expected, stdout)
 
-        cmd = '%s -c "import venvtest; print venvtest.__file__"' % self.python
+        cmd = '%s %s -c "import venvtest; print venvtest.__file__"' % (sys.executable, self.python)
         stdout, stderr = self.run_command(cmd)
         a = len(self.virtualenv)
         b = -len('venvtest.pyc')
