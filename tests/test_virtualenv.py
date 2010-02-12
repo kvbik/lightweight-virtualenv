@@ -49,11 +49,25 @@ class TestRunCase(TestCase):
         os.chdir(path.join(self.oldcwd, 'tests', 'installs', 'venvtest-%s' % inst_type))
         inst = '%s setup.py %s' % (self.python, inst_command)
         stdout, stderr = self.run_command(inst)
+        os.chdir(self.oldcwd)
 
         cmd = '%s -c "import venvtest; print venvtest.__versionstr__"' % self.python
         stdout, stderr = self.run_command(cmd)
+        expected = '0.1.0\n'
+        self.failUnlessEqual(expected, stdout)
 
-        self.failUnlessEqual('0.1.0\n', stdout)
+        cmd = '%s -c "import venvtest; print venvtest.__file__"' % self.python
+        stdout, stderr = self.run_command(cmd)
+        a = len(self.virtualenv)
+        b = -len('venvtest.pyc')
+        env = stdout.strip()[:a]
+        mod = stdout.strip()[b:]
+        pth = stdout.strip()[a:b]
+
+        print pth
+
+        self.failUnlessEqual(self.virtualenv, env)
+        self.failUnlessEqual('venvtest.pyc', mod)
 
     def test_install_distutils_way(self):
         self.install_some_way('distutils')
@@ -67,9 +81,4 @@ class TestRunCase(TestCase):
 
         # dir cleanup
         rmtree(self.directory)
-
-        # clear imported module
-        for i in self.imported:
-            if sys.modules.has_key(i):
-                del sys.modules[i]
 
