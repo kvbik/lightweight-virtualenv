@@ -1,6 +1,14 @@
-======================================
+note
+----
+
+this repository is much more a playgroung for something that is used
+in rvirtualenv package. if you want to try relocatable virtual environment
+please follow the other project: `rvirtualevn`_.
+
+.. _rvirtualevn: http://github.com/kvbik/rvirtualenv
+
 lightweight python virtual environment
-======================================
+--------------------------------------
 
 this directory structure is trying to be a relocatable virtual python environment
 
